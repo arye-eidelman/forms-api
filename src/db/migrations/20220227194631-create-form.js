@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('formTemplates', {
+    await queryInterface.createTable('forms', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -17,7 +17,7 @@ module.exports = {
       description: {
         type: Sequelize.STRING(10000)
       },
-      exceptingSubmissions: {
+      acceptingSubmissions: {
         type: Sequelize.BOOLEAN
       },
       deletedAt: {
@@ -34,6 +34,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('formTemplates');
+    await queryInterface.dropTable('Forms');
   }
 };

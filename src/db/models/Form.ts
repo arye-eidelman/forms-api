@@ -1,11 +1,11 @@
 import { Model, DataTypes, InferAttributes, InferCreationAttributes, CreationOptional } from 'sequelize';
 import connection from "../connection";
 
-class FormTemplate extends Model<InferAttributes<FormTemplate>, InferCreationAttributes<FormTemplate>> {
+class Form extends Model<InferAttributes<Form>, InferCreationAttributes<Form>> {
   declare slug: CreationOptional<string>;
   declare title: string;
   declare description: string | null;
-  declare exceptingSubmissions: CreationOptional<boolean>;
+  declare acceptingSubmissions: CreationOptional<boolean>;
   declare deletedAt: Date | null;
   /**
    * Helper method for defining associations.
@@ -18,7 +18,7 @@ class FormTemplate extends Model<InferAttributes<FormTemplate>, InferCreationAtt
   }
 }
 
-FormTemplate.init({
+Form.init({
   slug: {
     defaultValue: DataTypes.UUIDV4,
     type: DataTypes.STRING,
@@ -26,15 +26,17 @@ FormTemplate.init({
   },
   title: DataTypes.STRING,
   description: DataTypes.STRING,
-  exceptingSubmissions: {
+  acceptingSubmissions: {
     type: DataTypes.BOOLEAN,
     defaultValue: false
   },
   deletedAt: DataTypes.DATE
 }, {
   sequelize: connection,
-  modelName: 'formTemplate',
-  paranoid: true,
+  modelName: 'Form',
+  tableName: 'forms',
+  timestamps: true,
+  paranoid: true
 });
 
-export default FormTemplate;
+export default Form;

@@ -1,5 +1,5 @@
-import FormTemplate from "./FormTemplate";
-const models: {[key: string]: any} = { FormTemplate }
+import Form from "./Form";
+const models: {[key: string]: any} = { Form }
 
 
 // associate models
